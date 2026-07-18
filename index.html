@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
@@ -13,16 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- MathJax for rendering LaTeX formulas -->
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$']],
-                displayMath: [['$$', '$$']]
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es6/tex-mml-chtml.js"></script>
     
     <script>
         tailwind.config = {
@@ -47,7 +36,6 @@
         }
     </script>
     <style>
-        /* Scrollbar styling */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -61,16 +49,6 @@
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #58a6ff;
-        }
-        /* Custom Glowing Elements */
-        .neon-glow-blue {
-            box-shadow: 0 0 15px rgba(88, 166, 255, 0.15);
-        }
-        .neon-glow-red {
-            box-shadow: 0 0 15px rgba(255, 123, 114, 0.15);
-        }
-        .neon-glow-green {
-            box-shadow: 0 0 15px rgba(86, 211, 100, 0.15);
         }
     </style>
 </head>
@@ -93,19 +71,11 @@
             <nav class="p-4 space-y-2">
                 <button onclick="switchTab('tab-infrastructure')" id="btn-infrastructure" class="w-full flex items-center space-x-3 px-4 py-3 rounded-md transition-all font-heading font-medium text-sm text-left bg-slateNavy border-l-4 border-neonBlue text-white">
                     <i class="fa-solid fa-server text-neonBlue w-5 text-center"></i>
-                    <span>Infrastructure Risk Report</span>
+                    <span>Infrastructure Risk Assessment</span>
                 </button>
                 <button onclick="switchTab('tab-posture')" id="btn-posture" class="w-full flex items-center space-x-3 px-4 py-3 rounded-md transition-all font-heading font-medium text-sm text-left hover:bg-slateNavy text-terminalText/80 hover:text-white">
                     <i class="fa-solid fa-shield-halved text-neonBlue/80 w-5 text-center"></i>
-                    <span>Posture Assessment Framework</span>
-                </button>
-                <button onclick="switchTab('tab-incident')" id="btn-incident" class="w-full flex items-center space-x-3 px-4 py-3 rounded-md transition-all font-heading font-medium text-sm text-left hover:bg-slateNavy text-terminalText/80 hover:text-white">
-                    <i class="fa-solid fa-square-terminal text-neonBlue/80 w-5 text-center"></i>
-                    <span>Incident Validation Guide</span>
-                </button>
-                <button onclick="switchTab('tab-calculator')" id="btn-calculator" class="w-full flex items-center space-x-3 px-4 py-3 rounded-md transition-all font-heading font-medium text-sm text-left hover:bg-slateNavy text-terminalText/80 hover:text-white">
-                    <i class="fa-solid fa-calculator text-neonBlue/80 w-5 text-center"></i>
-                    <span>Risk Financial Modeler</span>
+                    <span>Security Posture Framework</span>
                 </button>
             </nav>
         </div>
@@ -113,120 +83,112 @@
         <!-- Footer Systems Status -->
         <div class="p-6 border-t border-borderGray bg-slateNavy/40">
             <div class="flex items-center justify-between text-xs font-mono">
-                <span>System Integrity:</span>
-                <span class="text-sageGreen font-bold">100% SECURE</span>
+                <span>System Status:</span>
+                <span class="text-sageGreen font-bold">READY</span>
             </div>
             <div class="flex items-center justify-between text-xs font-mono mt-2">
-                <span>Target Node:</span>
-                <span class="text-neonBlue">Cobalt Harbour (Sydney)</span>
+                <span>Location Node:</span>
+                <span class="text-neonBlue">Sydney Gateway</span>
             </div>
         </div>
     </aside>
 
-    <!-- MAIN INTERACTIVE WORKSPACE -->
+    <!-- MAIN WORKSPACE -->
     <main class="flex-grow overflow-y-auto p-6 md:p-12 space-y-12 h-full">
 
-        <!-- TAB 1: INFRASTRUCTURE RISK VALIDATION REPORT -->
+        <!-- TAB 1: INFRASTRUCTURE RISK ASSESSMENT -->
         <section id="tab-infrastructure" class="space-y-10">
             <!-- Header Banner -->
             <div class="border-b border-borderGray pb-6">
-                <span class="font-mono text-xs text-terminalRed font-bold uppercase tracking-widest">[STRATEGIC ASSESSMENT & ARCHITECTURE]</span>
-                <h2 class="font-heading font-bold text-3xl md:text-4xl text-neonBlue mt-2">Enterprise Infrastructure Risk Validation</h2>
-                <p class="text-base text-terminalText/70 mt-2 font-mono">Mapped Vulnerabilities vs. Operational Consequences | Case: Cobalt Harbour Financial</p>
+                <span class="font-mono text-xs text-terminalRed font-bold uppercase tracking-widest">[TECHNICAL SECURITY AUDIT]</span>
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-neonBlue mt-2">Enterprise Infrastructure Risk Analysis</h2>
+                <p class="text-base text-terminalText/70 mt-2 font-mono">Vulnerability Mapping vs Operational Impact | Case: Cobalt Harbour Financial</p>
             </div>
 
-            <!-- Advisory & Engineering Thesis -->
+            <!-- Strategy & Engineering Summary -->
             <div class="bg-lightSlate border border-borderGray p-6 rounded-lg relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-2 font-mono text-xs text-borderGray">SEC_THESIS_01</div>
-                <h3 class="font-heading font-semibold text-lg text-white mb-3">1. Executive Summary & Advisory Thesis</h3>
+                <div class="absolute top-0 right-0 p-2 font-mono text-xs text-borderGray">AUDIT_REF_01</div>
+                <h3 class="font-heading font-semibold text-lg text-white mb-3">1. Executive Summary</h3>
                 <p class="text-terminalText leading-relaxed mb-4 text-base">
-                    In modern wealth management and capital operations, perimeters are no longer dictated by physical network bounds; **identity has materialized as the new enterprise firewall**. Reactive patch cycles expose environments to cascading lateral takeover trajectories.
+                    Traditional network perimeters are no longer enough to protect modern corporate assets. As systems move to the cloud and hybrid environments, **identity has become the primary boundary** that security teams must monitor and defend.
                 </p>
                 <p class="text-terminalText leading-relaxed text-base">
-                    This report documents an internal technical audit reproducing how legacy infrastructure transport channels expose Cobalt Harbour Financial to active lateral compromise. By calculating both the direct financial risk and the operational friction of downtime, we build a joint business case for deploying automated, phishing-resistant protective boundaries and hardening internal enterprise nodes.
+                    This assessment documents an internal technical audit exploring how outdated network protocols allow attackers to move laterally through internal corporate networks. By analyzing how real world network flaws map to business disruptions, this document outlines the engineering steps required to deploy phishing-resistant access controls and isolate high value internal infrastructure.
                 </p>
             </div>
 
-            <!-- Mathematical Risk Matrix -->
+            <!-- Technical Impact Map -->
             <div class="space-y-6">
-                <h3 class="font-heading font-semibold text-xl text-white">2. Quantifying the Business Risk Matrix</h3>
+                <h3 class="font-heading font-semibold text-xl text-white">2. Incident Blast Radius & Exposure Analysis</h3>
                 <p class="text-terminalText text-base">
-                    The threat landscape is quantified utilizing standard financial risk formulas. Annualized Risk is calculated via:
-                </p>
-                <div class="bg-lightSlate border border-borderGray p-4 rounded-lg font-mono text-center text-neonBlue text-lg my-4">
-                    $$ALE = SLE \times ARO$$
-                </div>
-                <p class="text-terminalText text-xs text-terminalText/60 italic text-center">
-                    Where: $SLE$ = Single Loss Expectancy (Financial cost of a single occurrence) | $ARO$ = Annualized Rate of Occurrence.
+                    The technical vulnerabilities discovered during the environment review pose direct operational and technical risks to the business:
                 </p>
 
-                <!-- Risk Rows Cards -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-                    <!-- Layer 1 -->
+                    <!-- Impact 1 -->
                     <div class="border border-borderGray bg-lightSlate p-5 rounded-lg flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-3">
                                 <span class="font-mono text-xs text-terminalRed bg-terminalRed/10 px-2 py-1 rounded">INGRESS VECTOR</span>
                                 <i class="fa-solid fa-circle-exclamation text-terminalRed"></i>
                             </div>
-                            <h4 class="font-heading font-bold text-white mb-2">Legacy Protocol Exposure</h4>
+                            <h4 class="font-heading font-bold text-white mb-2">Legacy Network Protocols</h4>
                             <p class="text-sm text-terminalText/80 leading-relaxed">
-                                Unpatched Windows Server 2012 R2 system exposing active SMBv1 channels on port $445$ (vulnerable to MS17-010 / EternalBlue exploitation).
+                                Legacy Windows Server nodes are running active, unpatched SMBv1 services on port 445. This leaves them vulnerable to well-known exploits like EternalBlue.
                             </p>
                         </div>
                         <div class="mt-4 pt-4 border-t border-borderGray font-mono text-xs text-neonBlue">
-                            Calculated SLE: <span class="text-white font-bold">$4,450,000 USD</span>
+                            Technical Status: <span class="text-terminalRed font-bold">Needs Patching</span>
                         </div>
                     </div>
-                    <!-- Layer 2 -->
+                    <!-- Impact 2 -->
                     <div class="border border-borderGray bg-lightSlate p-5 rounded-lg flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="font-mono text-xs text-terminalRed bg-terminalRed/10 px-2 py-1 rounded">LATERAL CAPACITY</span>
+                                <span class="font-mono text-xs text-terminalRed bg-terminalRed/10 px-2 py-1 rounded">LATERAL RISK</span>
                                 <i class="fa-solid fa-diagram-project text-terminalRed"></i>
                             </div>
-                            <h4 class="font-heading font-bold text-white mb-2">Cleartext Credentials</h4>
+                            <h4 class="font-heading font-bold text-white mb-2">Plaintext Credential Leaks</h4>
                             <p class="text-sm text-terminalText/80 leading-relaxed">
-                                Weak admin keys (<code class="text-terminalRed">Manga113!</code>) and plaintext configuration stores cached within Local Security Authority Subsystem (LSASS) active memory.
+                                Privileged administrative passwords and access tokens remain cached in the memory space of Local Security Authority services (LSASS), allowing easy extraction if a machine is compromised.
                             </p>
                         </div>
                         <div class="mt-4 pt-4 border-t border-borderGray font-mono text-xs text-terminalRed">
-                            Risk Index: <span class="font-bold">CRITICAL COMPLIANCE OUTAGE</span>
+                            Risk Level: <span class="font-bold">High Domain Threat</span>
                         </div>
                     </div>
-                    <!-- Layer 3 -->
+                    <!-- Impact 3 -->
                     <div class="border border-borderGray bg-lightSlate p-5 rounded-lg flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="font-mono text-xs text-terminalRed bg-terminalRed/10 px-2 py-1 rounded">SYSTEM TAKEOVER</span>
+                                <span class="font-mono text-xs text-terminalRed bg-terminalRed/10 px-2 py-1 rounded">BLAST RADIUS</span>
                                 <i class="fa-solid fa-skull-crossbones text-terminalRed"></i>
                             </div>
-                            <h4 class="font-heading font-bold text-white mb-2">Privileged Execution</h4>
+                            <h4 class="font-heading font-bold text-white mb-2">Domain Admin Takeover</h4>
                             <p class="text-sm text-terminalText/80 leading-relaxed">
-                                Zero-day validation enabling kernel-level memory allocation pool takeover, awarding full <code class="text-sageGreen">NT AUTHORITY\SYSTEM</code> active console control.
+                                Successful privilege escalation grants an unauthorized actor full system access, bypassing internal detection rules and allowing widespread modifications across the domain.
                             </p>
                         </div>
                         <div class="mt-4 pt-4 border-t border-borderGray font-mono text-xs text-neonBlue">
-                            Downtime Loss: <span class="text-white font-bold">$250,000 USD / Hour</span>
+                            Business Target: <span class="text-white font-bold">Domain Controller Security</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Technical Attack Path Reconstruction -->
+            <!-- Attack Path Logs -->
             <div class="space-y-6">
                 <div class="flex items-center justify-between">
-                    <h3 class="font-heading font-semibold text-xl text-white">3. Technical Attack Path Reconstruction</h3>
-                    <span class="text-xs font-mono text-terminalText/40">[INTERNAL_SIMULATION_LOG]</span>
+                    <h3 class="font-heading font-semibold text-xl text-white">3. Attack Path Replication Logs</h3>
+                    <span class="text-xs font-mono text-terminalText/40">[SIMULATION_LOG]</span>
                 </div>
                 
                 <div class="space-y-4">
-                    <p class="text-sm">Simulation of the multi-tier attack chain mapping out physical environment gaps to isolate blast radiuses.</p>
+                    <p class="text-sm">Technical walkthrough showing how exposed internal services allow quick escalations to full domain control.</p>
                     
-                    <!-- Terminal Console Mock 1 -->
                     <div class="rounded-lg border border-borderGray bg-lightSlate overflow-hidden">
                         <div class="bg-slateNavy px-4 py-2 border-b border-borderGray flex items-center justify-between">
-                            <span class="font-mono text-xs text-neonBlue">CONSOLE_SESSION_01 // Target Profiling & Port Discovery</span>
+                            <span class="font-mono text-xs text-neonBlue">SESSION_01 // Port Scanning & Vulnerability Detection</span>
                             <div class="flex space-x-1.5">
                                 <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
                                 <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
@@ -234,19 +196,18 @@
                             </div>
                         </div>
                         <div class="p-4 font-mono text-xs text-terminalText/90 space-y-1">
-                            <div>$ <span class="text-white">sudo nmap -p 139,445 -T4 -A -v 192.168.4.20</span></div>
-                            <div class="text-terminalText/50">Initiating Service Discovery Scan on Target Node (192.168.4.20)...</div>
+                            <div>$ <span class="text-white">nmap -p 139,445 -A 192.168.4.20</span></div>
+                            <div class="text-terminalText/50">Scanning internal asset node at 192.168.4.20...</div>
                             <div>PORT    STATE SERVICE     VERSION</div>
                             <div>139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn</div>
-                            <div>445/tcp <span class="text-terminalRed font-bold">open</span>  microsoft-ds <span class="text-terminalRed">Windows Server 2012 R2 Standard 9600 microsoft-ds</span></div>
-                            <div class="text-neonBlue">[!] CRITICAL: Host exposes vulnerable SMBv1 protocol. Node susceptible to MS17-010.</div>
+                            <div>445/tcp <span class="text-terminalRed font-bold">open</span>  microsoft-ds <span class="text-terminalRed">Windows Server 2012 R2 Standard</span></div>
+                            <div class="text-neonBlue">[!] Alert: Node has SMBv1 active. Target is vulnerable to remote code execution.</div>
                         </div>
                     </div>
 
-                    <!-- Terminal Console Mock 2 -->
                     <div class="rounded-lg border border-borderGray bg-lightSlate overflow-hidden">
                         <div class="bg-slateNavy px-4 py-2 border-b border-borderGray flex items-center justify-between">
-                            <span class="font-mono text-xs text-neonBlue">CONSOLE_SESSION_02 // Penetration & Remote Execution</span>
+                            <span class="font-mono text-xs text-neonBlue">SESSION_02 // Access Validation & Shell Execution</span>
                             <div class="flex space-x-1.5">
                                 <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
                                 <div class="w-2.5 h-2.5 rounded-full bg-borderGray"></div>
@@ -257,60 +218,52 @@
                             <div>msf6 &gt; <span class="text-white">use exploit/windows/smb/ms17_010_eternalblue</span></div>
                             <div>msf6 exploit(ms17_010_eternalblue) &gt; <span class="text-white">set RHOSTS 192.168.4.20</span></div>
                             <div>msf6 exploit(ms17_010_eternalblue) &gt; <span class="text-white">exploit</span></div>
-                            <div class="text-terminalText/50">[*] Allocating payload ring buffer...</div>
-                            <div class="text-terminalText/50">[+] Ring buffer mapped. Grooming kernel memory heap structures...</div>
-                            <div class="text-sageGreen">[+] Exploitation success. Meterpreter session active.</div>
-                            <div>meterpreter &gt; <span class="text-white">getuid</span></div>
-                            <div class="text-neonBlue font-bold">Server username: NT AUTHORITY\SYSTEM</div>
+                            <div class="text-terminalText/50">[*] Sending payload...</div>
+                            <div class="text-terminalText/50">[+] Payload delivered. Preparing command shell...</div>
+                            <div class="text-sageGreen">[+] Shell active. Access confirmed.</div>
+                            <div>C:\Windows\system32&gt; <span class="text-white">whoami</span></div>
+                            <div class="text-neonBlue font-bold">nt authority\system</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Posture TCO Comparison Table -->
+            <!-- Operational Efficiency Metrics Table -->
             <div class="space-y-6">
-                <h3 class="font-heading font-semibold text-xl text-white">4. Posture Economics: 3-Year Strategic TCO & Operational Efficiency</h3>
+                <h3 class="font-heading font-semibold text-xl text-white">4. Operational Impact: Reactive Approach vs Zero Trust Architecture</h3>
                 <div class="overflow-x-auto border border-borderGray rounded-lg">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-lightSlate border-b border-borderGray text-xs font-mono tracking-wider text-neonBlue">
-                                <th class="p-4 uppercase">Functional Operational Center</th>
-                                <th class="p-4 uppercase">Legacy Status (Reactive SecOps)</th>
-                                <th class="p-4 uppercase">Proposed Design (Zero Trust Architecture)</th>
-                                <th class="p-4 uppercase">ROI / Efficiency Realized</th>
+                                <th class="p-4 uppercase">Security Domain</th>
+                                <th class="p-4 uppercase">Current State (Reactive SecOps)</th>
+                                <th class="p-4 uppercase">Proposed Architecture (Zero Trust)</th>
+                                <th class="p-4 uppercase">Operational Outcome</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-borderGray text-sm">
                             <tr class="hover:bg-lightSlate/40">
-                                <td class="p-4 font-semibold text-white">Annual Incident Response & Triage</td>
-                                <td class="p-4 font-mono">$120,000 / Year</td>
-                                <td class="p-4 font-mono text-sageGreen">$15,000 / Year</td>
+                                <td class="p-4 font-semibold text-white">Threat Detection & Isolation</td>
+                                <td class="p-4">Manual log analysis, requiring days to identify subtle lateral movement.</td>
+                                <td class="p-4 text-sageGreen">Real-time behavior tracking with automated process isolation.</td>
                                 <td class="p-4">
-                                    <span class="bg-sageGreen/10 text-sageGreen text-xs px-2.5 py-1 rounded-full border border-sageGreen/30 font-semibold">87.5% Remediation Savings</span>
+                                    <span class="bg-sageGreen/10 text-sageGreen text-xs px-2.5 py-1 rounded-full border border-sageGreen/30 font-semibold">Instant Attack Containment</span>
                                 </td>
                             </tr>
                             <tr class="hover:bg-lightSlate/40">
-                                <td class="p-4 font-semibold text-white">SecOps Manual Maintenance Overhead</td>
-                                <td class="p-4 font-mono">$180,000 / Year</td>
-                                <td class="p-4 font-mono text-sageGreen">$95,000 / Year</td>
+                                <td class="p-4 font-semibold text-white">Vulnerability Management</td>
+                                <td class="p-4">Manual patch validation cycles creating security backlogs.</td>
+                                <td class="p-4 text-sageGreen">Automated discovery tools and continuous compliance validation.</td>
                                 <td class="p-4">
-                                    <span class="bg-sageGreen/10 text-sageGreen text-xs px-2.5 py-1 rounded-full border border-sageGreen/30 font-semibold">47.2% Team Efficiency Gain</span>
+                                    <span class="bg-sageGreen/10 text-sageGreen text-xs px-2.5 py-1 rounded-full border border-sageGreen/30 font-semibold">~50% Maintenance Time Saved</span>
                                 </td>
                             </tr>
                             <tr class="hover:bg-lightSlate/40">
-                                <td class="p-4 font-semibold text-white">Compliance & Regulatory Risk Exposure</td>
-                                <td class="p-4 text-terminalRed font-semibold">Uncapped (ALE &gt; $4M)</td>
-                                <td class="p-4 text-sageGreen font-semibold">Continuous Compliance State</td>
+                                <td class="p-4 font-semibold text-white">Identity Access Management</td>
+                                <td class="p-4 text-terminalRed font-semibold">Static passwords with basic multi-factor policies.</td>
+                                <td class="p-4 text-sageGreen font-semibold">Phishing-resistant authentication & device checks.</td>
                                 <td class="p-4 text-xs text-terminalText/70">
-                                    Aligned to Privacy Act 1988 (Cth) & ASD Essential Eight
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-lightSlate/40 bg-lightSlate/20">
-                                <td class="p-4 font-bold text-white uppercase">Cumulative 3-Year Operational Cost</td>
-                                <td class="p-4 font-mono text-terminalRed font-bold">$900,000</td>
-                                <td class="p-4 font-mono text-sageGreen font-bold">$330,000</td>
-                                <td class="p-4 font-bold text-neonBlue">
-                                    Save ~ $570,000 Net OpEx
+                                    Stops stolen credential reuse out-of-the-box
                                 </td>
                             </tr>
                         </tbody>
@@ -318,148 +271,148 @@
                 </div>
             </div>
 
-            <!-- Next Step Strategy Roadmap -->
+            <!-- Hardening Timeline Roadmap -->
             <div class="space-y-6">
-                <h3 class="font-heading font-semibold text-xl text-white">5. Architectural Hardening & Implementation Timeline</h3>
+                <h3 class="font-heading font-semibold text-xl text-white">5. Security Hardening Roadmap</h3>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
                     <!-- Phase 1 -->
                     <div class="border border-borderGray bg-lightSlate p-5 rounded-lg relative">
-                        <div class="absolute -top-3 left-4 bg-terminalRed text-slateNavy font-mono font-bold text-xs px-2 py-0.5 rounded">PHASE 1: IMMEDIATE (24H)</div>
-                        <h4 class="font-heading font-bold text-white mt-2 mb-2">Contain & Immunize</h4>
+                        <div class="absolute -top-3 left-4 bg-terminalRed text-slateNavy font-mono font-bold text-xs px-2 py-0.5 rounded">PHASE 1: IMMEDIATE (24 HOURS)</div>
+                        <h4 class="font-heading font-bold text-white mt-2 mb-2">Isolate & Patch</h4>
                         <ul class="text-sm text-terminalText/80 space-y-2 list-disc list-inside">
-                            <li>Disable legacy SMBv1 globally</li>
-                            <li>Force-patch vulnerability MS17-010</li>
-                            <li>Enforce global password expiration</li>
+                            <li>Disable the SMBv1 protocol across all endpoints</li>
+                            <li>Apply missing security patches to servers</li>
+                            <li>Enforce complex password history rules</li>
                         </ul>
                     </div>
                     <!-- Phase 2 -->
                     <div class="border border-borderGray bg-lightSlate p-5 rounded-lg relative">
-                        <div class="absolute -top-3 left-4 bg-neonBlue text-slateNavy font-mono font-bold text-xs px-2 py-0.5 rounded">PHASE 2: MID-TERM (30D)</div>
-                        <h4 class="font-heading font-bold text-white mt-2 mb-2">Isolate & Aggregate</h4>
+                        <div class="absolute -top-3 left-4 bg-neonBlue text-slateNavy font-mono font-bold text-xs px-2 py-0.5 rounded">PHASE 2: MID-TERM (30 DAYS)</div>
+                        <h4 class="font-heading font-bold text-white mt-2 mb-2">Network Segmentation</h4>
                         <ul class="text-sm text-terminalText/80 space-y-2 list-disc list-inside">
-                            <li>VLAN routing microsegmentation</li>
-                            <li>Centralized SIEM collection agents</li>
-                            <li>Host telemetry monitoring profile</li>
+                            <li>Isolate internal subnets using secure firewall rules</li>
+                            <li>Consolidate event tracking logs to a central server</li>
+                            <li>Deploy host endpoint detection monitors</li>
                         </ul>
                     </div>
                     <!-- Phase 3 -->
                     <div class="border border-borderGray bg-lightSlate p-5 rounded-lg relative">
-                        <div class="absolute -top-3 left-4 bg-sageGreen text-slateNavy font-mono font-bold text-xs px-2 py-0.5 rounded">PHASE 3: TARGET (90D)</div>
-                        <h4 class="font-heading font-bold text-white mt-2 mb-2">Zero Trust Integration</h4>
+                        <div class="absolute -top-3 left-4 bg-sageGreen text-slateNavy font-mono font-bold text-xs px-2 py-0.5 rounded">PHASE 3: TARGET (90 DAYS)</div>
+                        <h4 class="font-heading font-bold text-white mt-2 mb-2">Access Control Maturity</h4>
                         <ul class="text-sm text-terminalText/80 space-y-2 list-disc list-inside">
-                            <li>Phishing-resistant MFA</li>
-                            <li>Deploy machine-speed XDR playbooks</li>
-                            <li>Continuous posture auditing engine</li>
+                            <li>Deploy phishing-resistant hardware auth keys</li>
+                            <li>Automate containment actions via playbooks</li>
+                            <li>Set up recurring configurations auditing pipelines</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 2: SECURITY POSTURE ASSESSMENT FRAMEWORK -->
+        <!-- TAB 2: SECURITY POSTURE FRAMEWORK -->
         <section id="tab-posture" class="hidden space-y-10">
             <!-- Header Banner -->
             <div class="border-b border-borderGray pb-6">
-                <span class="font-mono text-xs text-sageGreen font-bold uppercase tracking-widest">[OPERATIONAL ARCHITECTURE FRAMEWORK]</span>
+                <span class="font-mono text-xs text-sageGreen font-bold uppercase tracking-widest">[OPERATIONAL LIFECYCLE]</span>
                 <h2 class="font-heading font-bold text-3xl md:text-4xl text-neonBlue mt-2">Security Posture Assessment Framework</h2>
-                <p class="text-base text-terminalText/70 mt-2 font-mono">Remediation Scoping, Architecture Governance, & Internal PoV Matrix</p>
+                <p class="text-base text-terminalText/70 mt-2 font-mono">Environment Intake, Internal Risk Validation, & Governance Lifecycle</p>
             </div>
 
-            <!-- Framework Process Timeline -->
+            <!-- Framework Process -->
             <div class="space-y-6">
-                <h3 class="font-heading font-semibold text-xl text-white">1. Core Delivery Framework (The 4-Phased Lifecycle)</h3>
+                <h3 class="font-heading font-semibold text-xl text-white">1. Governance Lifecycle (The 4-Phased Approach)</h3>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
                     <div class="bg-lightSlate border-l-4 border-neonBlue border-y border-r border-borderGray p-5 rounded-r">
                         <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">01 // DISCOVERY</span>
-                        <h4 class="font-heading font-bold text-white mb-2">Contextual Intake</h4>
+                        <h4 class="font-heading font-bold text-white mb-2">Asset Inventory</h4>
                         <p class="text-xs text-terminalText/80 leading-relaxed">
-                            Interrogate current directories, local privilege maps, and logical domain trust patterns to document actual surface assets.
+                            Analyze directory structures, account configurations, and network permissions to locate target systems.
                         </p>
                     </div>
                     <div class="bg-lightSlate border-l-4 border-neonBlue border-y border-r border-borderGray p-5 rounded-r">
                         <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">02 // VALIDATION</span>
-                        <h4 class="font-heading font-bold text-white mb-2">Active Path Emulation</h4>
+                        <h4 class="font-heading font-bold text-white mb-2">Technical Testing</h4>
                         <p class="text-xs text-terminalText/80 leading-relaxed">
-                            Simulate lateral and external exploitation vectors safely to confirm identified vulnerabilities inside live operations.
+                            Safely simulate real world lateral network exploits to verify whether discovered configuration weaknesses are usable.
                         </p>
                     </div>
                     <div class="bg-lightSlate border-l-4 border-neonBlue border-y border-r border-borderGray p-5 rounded-r">
-                        <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">03 // QUANTIFICATION</span>
-                        <h4 class="font-heading font-bold text-white mb-2">Risk Quantification</h4>
+                        <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">03 // ANALYSIS</span>
+                        <h4 class="font-heading font-bold text-white mb-2">Impact Review</h4>
                         <p class="text-xs text-terminalText/80 leading-relaxed">
-                            Translate system vulnerability records directly into dollars ($SLE$ & $ALE$) to secure executive focus.
+                            Translate low level server vulnerabilities into direct operational threat metrics that engineering leadership can address.
                         </p>
                     </div>
                     <div class="bg-lightSlate border-l-4 border-neonBlue border-y border-r border-borderGray p-5 rounded-r">
-                        <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">04 // SYNTHESIS</span>
-                        <h4 class="font-heading font-bold text-white mb-2">Remediation Roadmap</h4>
+                        <span class="font-mono text-xs text-neonBlue font-semibold block mb-1">04 // MITIGATION</span>
+                        <h4 class="font-heading font-bold text-white mb-2">Remediation Delivery</h4>
                         <p class="text-xs text-terminalText/80 leading-relaxed">
-                            Consolidate remediation steps, assign task lists, design technical playbooks, and outline zero-trust migration paths.
+                            Create remediation tickets, build response playbooks, and outline long term system hardening paths.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Interactive Proof of Value Checklist -->
+            <!-- Validation Metrics -->
             <div class="space-y-6">
-                <h3 class="font-heading font-semibold text-xl text-white">2. Proof of Value (PoV) Success Criteria</h3>
+                <h3 class="font-heading font-semibold text-xl text-white">2. Engineering Target Objectives</h3>
                 <p class="text-terminalText text-base">
-                    This section defines the objective, technical verification steps required to validate that our modern Zero Trust tools outperform legacy, reactive controls. Select and track the metrics below:
+                    This section defines the core performance benchmarks used to verify that our proposed zero-trust updates outmatch legacy setups:
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-lightSlate border border-borderGray p-6 rounded-lg">
                     <!-- Current State vs Target -->
                     <div class="space-y-4">
-                        <h4 class="font-heading font-bold text-white text-base border-b border-borderGray pb-2 uppercase tracking-wider text-terminalRed">Legacy Baseline Controls</h4>
+                        <h4 class="font-heading font-bold text-white text-base border-b border-borderGray pb-2 uppercase tracking-wider text-terminalRed">Legacy Baseline Setup</h4>
                         <ul class="space-y-3 font-mono text-xs text-terminalText/80">
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-square-xmark text-terminalRed"></i>
-                                <span>Mean Time to Detect: ~14 Days</span>
+                                <span>Threat Detection: High delay, log dependent</span>
                             </li>
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-square-xmark text-terminalRed"></i>
-                                <span>Isolation Mode: Manual, High-Latency</span>
+                                <span>Network Control: Manual host containment</span>
                             </li>
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-square-xmark text-terminalRed"></i>
-                                <span>Security Boundary: Static IP Gateways</span>
+                                <span>Trust Rules: Broad network wide assumptions</span>
                             </li>
                         </ul>
                     </div>
                     <div class="space-y-4">
-                        <h4 class="font-heading font-bold text-white text-base border-b border-borderGray pb-2 uppercase tracking-wider text-sageGreen">Target Zero Trust State</h4>
+                        <h4 class="font-heading font-bold text-white text-base border-b border-borderGray pb-2 uppercase tracking-wider text-sageGreen">Target Infrastructure State</h4>
                         <ul class="space-y-3 font-mono text-xs text-sageGreen">
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-square-check"></i>
-                                <span>Mean Time to Detect: &lt; 5 Seconds</span>
+                                <span>Threat Detection: Real-time telemetry monitoring</span>
                             </li>
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-square-check"></i>
-                                <span>Isolation Mode: Automated Policy Block (&lt;60s)</span>
+                                <span>Network Control: Immediate automated device isolation</span>
                             </li>
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-square-check"></i>
-                                <span>Security Boundary: Context-Aware Access Engines</span>
+                                <span>Trust Rules: Per-request access authentication</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Scenario Validation Interrogator -->
+                <!-- Scenario Selection Component -->
                 <div class="space-y-4 mt-6">
                     <h4 class="font-heading font-semibold text-lg text-white">Select a Scoping Validation Scenario to Inspect:</h4>
                     
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <!-- Scenario 1 -->
                         <div class="border border-borderGray bg-lightSlate p-5 rounded-lg cursor-pointer hover:border-neonBlue transition-all" onclick="showScenario(1)">
                             <div class="flex items-center space-x-2 text-neonBlue mb-2">
                                 <i class="fa-solid fa-key"></i>
                                 <span class="font-mono text-xs font-bold uppercase">Scenario 01</span>
                             </div>
-                            <h5 class="font-heading font-bold text-white text-sm">Credential Harvesting Attack</h5>
-                            <p class="text-xs text-terminalText/60 mt-2">Simulating unmanaged external logins using stolen master domain identifiers.</p>
+                            <h5 class="font-heading font-bold text-white text-sm">Credential Stealing Mitigations</h5>
+                            <p class="text-xs text-terminalText/60 mt-2">Simulating rogue connection setups using stolen employee account details.</p>
                         </div>
                         <!-- Scenario 2 -->
                         <div class="border border-borderGray bg-lightSlate p-5 rounded-lg cursor-pointer hover:border-neonBlue transition-all" onclick="showScenario(2)">
@@ -467,8 +420,8 @@
                                 <i class="fa-solid fa-bug"></i>
                                 <span class="font-mono text-xs font-bold uppercase">Scenario 02</span>
                             </div>
-                            <h5 class="font-heading font-bold text-white text-sm">Malware / Lateral Run</h5>
-                            <p class="text-xs text-terminalText/60 mt-2">Executing benign process commands in user-space to capture real-time endpoint telemetry.</p>
+                            <h5 class="font-heading font-bold text-white text-sm">Lateral Movement Containment</h5>
+                            <p class="text-xs text-terminalText/60 mt-2">Executing safe user-level inspection commands to review host logging speeds.</p>
                         </div>
                     </div>
                 </div>
@@ -478,11 +431,9 @@
 
     <script>
         function switchTab(tabId) {
-            // Hide all sections
             document.getElementById('tab-infrastructure').classList.add('hidden');
             document.getElementById('tab-posture').classList.add('hidden');
             
-            // Remove active styles from all buttons
             const buttons = ['btn-infrastructure', 'btn-posture'];
             buttons.forEach(id => {
                 const btn = document.getElementById(id);
@@ -492,10 +443,8 @@
                 }
             });
 
-            // Show current section
             document.getElementById(tabId).classList.remove('hidden');
             
-            // Add active styles to clicked button
             const activeBtn = document.getElementById('btn-' + tabId.replace('tab-', ''));
             if (activeBtn) {
                 activeBtn.classList.add('bg-slateNavy', 'border-l-4', 'border-neonBlue', 'text-white');
@@ -504,11 +453,8 @@
         }
 
         function showScenario(scenarioNum) {
-            console.log("Inspecting validation scenario: " + scenarioNum);
-            // Internal application handling logic goes here
+            console.log("Reviewing validation test case: " + scenarioNum);
         }
     </script>
 </body>
 </html>
-
-```
