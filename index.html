@@ -52,7 +52,40 @@
         }
     </style>
 </head>
-<body class="bg-slateNavy text-terminalText font-sans h-full flex flex-col md:flex-row overflow-hidden">
+<body class="bg-slateNavy text-terminalText font-sans h-full flex flex-col md:flex-row overflow-hidden relative">
+
+    <!-- INTERACTIVE SCENARIO MODAL OVERLAY -->
+    <div id="scenario-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-fade-in">
+        <div class="bg-lightSlate border border-borderGray w-full max-w-2xl rounded-lg shadow-2xl overflow-hidden">
+            <div class="bg-slateNavy px-6 py-4 border-b border-borderGray flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i id="modal-icon" class="fa-solid fa-terminal text-neonBlue"></i>
+                    <span id="modal-title-id" class="font-mono text-xs font-bold text-neonBlue uppercase">SCENARIO ANALYSIS</span>
+                </div>
+                <button onclick="closeModal()" class="text-terminalText/60 hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <h4 id="modal-title" class="font-heading font-bold text-xl text-white">Scenario Title</h4>
+                <p id="modal-description" class="text-sm text-terminalText/80 leading-relaxed">Scenario Description details go here.</p>
+                
+                <div class="bg-slateNavy border border-borderGray rounded-lg overflow-hidden">
+                    <div class="bg-lightSlate/50 px-4 py-2 border-b border-borderGray font-mono text-xs text-terminalText/50">
+                        Practitioner Telemetry & Mitigations
+                    </div>
+                    <div id="modal-logs" class="p-4 font-mono text-xs text-sageGreen space-y-2 whitespace-pre-line bg-black/20">
+                        Logs...
+                    </div>
+                </div>
+            </div>
+            <div class="bg-slateNavy/60 px-6 py-3 border-t border-borderGray flex justify-end">
+                <button onclick="closeModal()" class="px-4 py-2 bg-borderGray hover:bg-borderGray/80 text-white rounded text-sm font-medium font-heading transition-colors">
+                    Close Simulation View
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- SIDEBAR NAVIGATION -->
     <aside class="w-full md:w-80 bg-lightSlate border-r border-borderGray flex flex-col justify-between shrink-0">
@@ -100,7 +133,7 @@
         <section id="tab-infrastructure" class="space-y-10">
             <!-- Header Banner -->
             <div class="border-b border-borderGray pb-6">
-                <span class="font-mono text-xs text-terminalRed font-bold uppercase tracking-widest">[TECHNICAL SECURITY AUDit]</span>
+                <span class="font-mono text-xs text-terminalRed font-bold uppercase tracking-widest">[TECHNICAL SECURITY AUDIT]</span>
                 <h2 class="font-heading font-bold text-3xl md:text-4xl text-neonBlue mt-2">Infrastructure Risk & Vulnerability Analysis</h2>
                 <p class="text-base text-terminalText/70 mt-2 font-mono">Technical Assessment vs Operational Exposure | Case: Cobalt Harbour Financial</p>
             </div>
@@ -247,42 +280,42 @@
                 </div>
             </div>
 
-            <!-- Operational Metrics Table -->
+            <!-- Defensive Posture Comparison Table (FIXED CELL PADDING AND WRAPPING) -->
             <div class="space-y-6">
                 <h3 class="font-heading font-semibold text-xl text-white">4. Defensive Posture Comparison</h3>
                 <div class="overflow-x-auto border border-borderGray rounded-lg">
-                    <table class="w-full text-left border-collapse">
+                    <table class="w-full text-left border-collapse table-auto min-w-[700px]">
                         <thead>
                             <tr class="bg-lightSlate border-b border-borderGray text-xs font-mono tracking-wider text-neonBlue">
-                                <th class="p-4 uppercase">Security Domain</th>
-                                <th class="p-4 uppercase">Reactive Operations</th>
-                                <th class="p-4 uppercase">Proactive Modern Controls</th>
-                                <th class="p-4 uppercase">Practical Outcome</th>
+                                <th class="p-4 uppercase w-1/4">Security Domain</th>
+                                <th class="p-4 uppercase w-1/4">Reactive Operations</th>
+                                <th class="p-4 uppercase w-1/4">Proactive Modern Controls</th>
+                                <th class="p-4 uppercase w-1/4">Practical Outcome</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-borderGray text-sm">
-                            <tr class="hover:bg-lightSlate/40">
+                            <tr class="hover:bg-lightSlate/40 transition-colors">
                                 <td class="p-4 font-semibold text-white">Threat Detection</td>
-                                <td class="p-4">Manual log analysis; high delay in spotting lateral movement.</td>
+                                <td class="p-4 text-terminalText/80">Manual log analysis; high delay in spotting lateral movement.</td>
                                 <td class="p-4 text-sageGreen">Real-time telemetry tracking with automated host isolation.</td>
                                 <td class="p-4">
-                                    <span class="bg-sageGreen/10 text-sageGreen text-xs px-2.5 py-1 rounded-full border border-sageGreen/30 font-semibold">Immediate Containment</span>
+                                    <span class="inline-block bg-sageGreen/10 text-sageGreen text-xs px-3 py-1 rounded-full border border-sageGreen/30 font-semibold whitespace-nowrap">Immediate Containment</span>
                                 </td>
                             </tr>
-                            <tr class="hover:bg-lightSlate/40">
+                            <tr class="hover:bg-lightSlate/40 transition-colors">
                                 <td class="p-4 font-semibold text-white">Vulnerability Management</td>
-                                <td class="p-4">Manual patch validation cycles creating task backlogs.</td>
+                                <td class="p-4 text-terminalText/80">Manual patch validation cycles creating task backlogs.</td>
                                 <td class="p-4 text-sageGreen">Automated internal scanning and continuous verification.</td>
                                 <td class="p-4">
-                                    <span class="bg-sageGreen/10 text-sageGreen text-xs px-2.5 py-1 rounded-full border border-sageGreen/30 font-semibold">~50% Time Saved</span>
+                                    <span class="inline-block bg-sageGreen/10 text-sageGreen text-xs px-3 py-1 rounded-full border border-sageGreen/30 font-semibold whitespace-nowrap">~50% Time Saved</span>
                                 </td>
                             </tr>
-                            <tr class="hover:bg-lightSlate/40">
+                            <tr class="hover:bg-lightSlate/40 transition-colors">
                                 <td class="p-4 font-semibold text-white">Access Management</td>
                                 <td class="p-4 text-terminalRed font-semibold">Static passwords with basic multi-factor steps.</td>
                                 <td class="p-4 text-sageGreen font-semibold">Phishing-resistant authentication & device health checks.</td>
-                                <td class="p-4 text-xs text-terminalText/70">
-                                    Stops stolen credential reuse out-of-the-box
+                                <td class="p-4">
+                                    <span class="inline-block bg-neonBlue/10 text-neonBlue text-xs px-3 py-1 rounded-full border border-neonBlue/30 font-semibold">Stops Token Abuse</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -419,28 +452,34 @@
                     </div>
                 </div>
 
-                <!-- Scenario Selection Component -->
+                <!-- Scenario Selection Component (FIXED CLICK INTERACTION) -->
                 <div class="space-y-4 mt-6">
-                    <h4 class="font-heading font-semibold text-lg text-white">Select a Security Validation Scenario to Inspect:</h4>
+                    <h4 class="font-heading font-semibold text-lg text-white">Select a Security Scoping Validation Scenario to Inspect:</h4>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <!-- Scenario 1 -->
-                        <div class="border border-borderGray bg-lightSlate p-5 rounded-lg cursor-pointer hover:border-neonBlue transition-all" onclick="showScenario(1)">
-                            <div class="flex items-center space-x-2 text-neonBlue mb-2">
-                                <i class="fa-solid fa-key"></i>
-                                <span class="font-mono text-xs font-bold uppercase">Scenario 01</span>
+                        <div class="border border-borderGray bg-lightSlate p-5 rounded-lg cursor-pointer hover:border-neonBlue hover:bg-lightSlate/80 transition-all group" onclick="showScenario(1)">
+                            <div class="flex items-center justify-between text-neonBlue mb-2">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-key"></i>
+                                    <span class="font-mono text-xs font-bold uppercase">Scenario 01</span>
+                                </div>
+                                <span class="text-[10px] font-mono opacity-0 group-hover:opacity-100 text-neonBlue transition-opacity">Launch Simulation &rarr;</span>
                             </div>
-                            <h5 class="font-heading font-bold text-white text-sm">Credential Exploitation Controls</h5>
-                            <p class="text-xs text-terminalText/60 mt-2">Simulating unauthorized connection attempts using leaked user account details.</p>
+                            <h5 class="font-heading font-bold text-white text-sm">Credential Stealing Mitigations</h5>
+                            <p class="text-xs text-terminalText/60 mt-2">Simulating rogue connection setups using stolen employee account details.</p>
                         </div>
                         <!-- Scenario 2 -->
-                        <div class="border border-borderGray bg-lightSlate p-5 rounded-lg cursor-pointer hover:border-neonBlue transition-all" onclick="showScenario(2)">
-                            <div class="flex items-center space-x-2 text-neonBlue mb-2">
-                                <i class="fa-solid fa-bug"></i>
-                                <span class="font-mono text-xs font-bold uppercase">Scenario 02</span>
+                        <div class="border border-borderGray bg-lightSlate p-5 rounded-lg cursor-pointer hover:border-neonBlue hover:bg-lightSlate/80 transition-all group" onclick="showScenario(2)">
+                            <div class="flex items-center justify-between text-neonBlue mb-2">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-bug"></i>
+                                    <span class="font-mono text-xs font-bold uppercase">Scenario 02</span>
+                                </div>
+                                <span class="text-[10px] font-mono opacity-0 group-hover:opacity-100 text-neonBlue transition-opacity">Launch Simulation &rarr;</span>
                             </div>
                             <h5 class="font-heading font-bold text-white text-sm">Lateral Movement Containment</h5>
-                            <p class="text-xs text-terminalText/60 mt-2">Running basic low-privilege inspection commands to check detection log speeds.</p>
+                            <p class="text-xs text-terminalText/60 mt-2">Executing safe user-level inspection commands to review host logging speeds.</p>
                         </div>
                     </div>
                 </div>
@@ -449,6 +488,22 @@
     </main>
 
     <script>
+        // Scenario Datastore for interactive UI component
+        const scenarioData = {
+            1: {
+                title: "Credential Stealing Mitigations & Token Abuse Check",
+                icon: "fa-key",
+                description: "This simulation replicates an adversary attempting to make lateral connections using harvested NTLM hashes or cached plain tokens across the local broadcast domain.",
+                logs: "[Practitioner Validation Script Init]\n$ python3 responder.py -I eth0 -wdv\n[+] Listening for local link authentication requests...\n[*] Intercepted token request from host 192.168.4.45\n[!] Validation Outcome: Legacy configuration accepted stolen credential packet.\n\n[Remediation Action Applied]: Enabled Protected Users security group rules & locked down LSASS memory parsing configurations."
+            },
+            2: {
+                title: "Lateral Movement Containment & Host Telemetry Speeds",
+                icon: "fa-bug",
+                description: "This simulation tracks user-level discovery patterns (e.g., executing net view or net user commands rapidly) to evaluate detection alert timeframes.",
+                logs: "[Practitioner Validation Script Init]\n$ execution_test --profile internal-discovery\n[*] Running discovery telemetry loops: 12 commands executed in 1.4 seconds.\n[*] Checking centralized Sysmon forwarder output pipelines...\n[+] Telemetry ingest completed in 410ms.\n\n[Validation Outcome]: Detection lag falls well within modern requirements (< 1 second response buffer). Automation hooks triggered host container quarantine successfully."
+            }
+        };
+
         function switchTab(tabId) {
             document.getElementById('tab-infrastructure').classList.add('hidden');
             document.getElementById('tab-posture').classList.add('hidden');
@@ -471,8 +526,34 @@
             }
         }
 
+        // Active Modal Interactive UI functions
         function showScenario(scenarioNum) {
-            console.log("Reviewing validation test case: " + scenarioNum);
+            const data = scenarioData[scenarioNum];
+            if (!data) return;
+
+            document.getElementById('modal-title-id').innerText = `SCENARIO 0${scenarioNum} // LIVE ANALYTICS`;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-description').innerText = data.description;
+            document.getElementById('modal-logs').innerText = data.logs;
+            
+            // Swap icon classes out smoothly
+            const iconEl = document.getElementById('modal-icon');
+            iconEl.className = `fa-solid ${data.icon} text-neonBlue`;
+
+            // Display overlay
+            document.getElementById('scenario-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('scenario-modal').classList.add('hidden');
+        }
+
+        // Close modal if user clicks outside of the card structure
+        window.onclick = function(event) {
+            const modal = document.getElementById('scenario-modal');
+            if (event.target == modal) {
+                closeModal();
+            }
         }
     </script>
 </body>
